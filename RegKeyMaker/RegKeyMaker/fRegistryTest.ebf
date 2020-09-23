@@ -1,0 +1,1261 @@
+VERSION 5.00
+Object = "{A32A88B3-817C-11D1-A762-00AA0044064C}#1.0#0"; "mscecomdlg.dll"
+Object = "{25C953A7-5464-11D1-A714-00AA0044064C}#1.0#0"; "MSCEFILE.DLL"
+Begin VB.Form fRegistryTest 
+   Appearance      =   0  'Flat
+   BackColor       =   &H80000005&
+   Caption         =   "KeyMaker (C) 2001 Berardi Michele"
+   ClientHeight    =   4110
+   ClientLeft      =   60
+   ClientTop       =   840
+   ClientWidth     =   3945
+   ForeColor       =   &H80000008&
+   ScaleHeight     =   4110
+   ScaleWidth      =   3945
+   ShowOK          =   -1  'True
+   Begin CEComDlgCtl.CommonDialog CommonDialog1 
+      Left            =   3480
+      Top             =   120
+      _cx             =   847
+      _cy             =   847
+      CancelError     =   0   'False
+      Color           =   0
+      DefaultExt      =   ""
+      DialogTitle     =   ""
+      FileName        =   ""
+      Filter          =   ""
+      FilterIndex     =   0
+      Flags           =   0
+      HelpCommand     =   0
+      HelpContext     =   ""
+      HelpFile        =   ""
+      InitDir         =   ""
+      MaxFileSize     =   256
+      FontBold        =   0   'False
+      FontItalic      =   0   'False
+      FontName        =   ""
+      FontSize        =   10
+      FontUnderline   =   0   'False
+      Max             =   0
+      Min             =   0
+      FontStrikethru  =   0   'False
+   End
+   Begin FILECTLCtl.File File2 
+      Left            =   3480
+      Top             =   600
+      _cx             =   1000
+      _cy             =   1000
+   End
+   Begin VBCE.CommandButton cmdextractsubkey 
+      Height          =   255
+      Left            =   480
+      TabIndex        =   27
+      Top             =   840
+      Width           =   255
+      _cx             =   450
+      _cy             =   450
+      BackColor       =   12632256
+      Caption         =   "Command4"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton delsubkey 
+      Height          =   300
+      Left            =   3240
+      TabIndex        =   26
+      Top             =   1995
+      Width           =   190
+      _cx             =   344
+      _cy             =   529
+      BackColor       =   12632256
+      Caption         =   "-"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton AddSubkey 
+      Height          =   300
+      Left            =   3240
+      TabIndex        =   25
+      Top             =   1680
+      Width           =   190
+      _cx             =   335
+      _cy             =   529
+      BackColor       =   12632256
+      Caption         =   "+"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.ComboBox SubKeyList 
+      Height          =   300
+      Left            =   60
+      TabIndex        =   24
+      Top             =   1995
+      Width           =   3170
+      List            =   "fRegistryTest.frx":0000
+      ItemData        =   "fRegistryTest.frx":0028
+      _cx             =   5592
+      _cy             =   529
+      BackColor       =   -2147483643
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   "Combo1"
+      IntegralHeight  =   -1  'True
+      Locked          =   0   'False
+      Sorted          =   -1  'True
+      Style           =   2
+   End
+   Begin VBCE.TextBox txtSubktype 
+      Height          =   315
+      Left            =   3000
+      TabIndex        =   23
+      Top             =   2520
+      Width           =   435
+      _cx             =   776
+      _cy             =   556
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Enabled         =   0   'False
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483646
+      Text            =   "str"
+      Alignment       =   2
+      HideSelection   =   -1  'True
+      Locked          =   0   'False
+      MaxLength       =   0
+      MultiLine       =   0   'False
+      PasswordChar    =   ""
+      ScrollBars      =   0
+   End
+   Begin VBCE.CommandButton cmdSaveDwd 
+      Height          =   195
+      Left            =   1380
+      TabIndex        =   22
+      Top             =   3840
+      Width           =   400
+      _cx             =   706
+      _cy             =   344
+      BackColor       =   12632256
+      Caption         =   "dwd"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdSaveBin 
+      Height          =   195
+      Left            =   960
+      TabIndex        =   21
+      Top             =   3840
+      Width           =   405
+      _cx             =   706
+      _cy             =   344
+      BackColor       =   12632256
+      Caption         =   "bin"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdSaveMsz 
+      Height          =   195
+      Left            =   540
+      TabIndex        =   20
+      Top             =   3840
+      Width           =   400
+      _cx             =   706
+      _cy             =   344
+      BackColor       =   12632256
+      Caption         =   "msz"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdSaveStr 
+      Height          =   195
+      Left            =   120
+      TabIndex        =   19
+      Top             =   3840
+      Width           =   400
+      _cx             =   706
+      _cy             =   344
+      BackColor       =   12632256
+      Caption         =   "str"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton Command3 
+      Height          =   195
+      Left            =   1920
+      TabIndex        =   18
+      Top             =   3840
+      Width           =   825
+      _cx             =   1455
+      _cy             =   344
+      BackColor       =   12632256
+      Caption         =   "Un(Re)do"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton Command2 
+      Height          =   225
+      Left            =   1920
+      TabIndex        =   17
+      Top             =   3600
+      Width           =   825
+      _cx             =   1455
+      _cy             =   397
+      BackColor       =   12632256
+      Caption         =   "Clear"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton Command1 
+      Height          =   405
+      Left            =   1440
+      TabIndex        =   16
+      Top             =   3180
+      Width           =   465
+      _cx             =   820
+      _cy             =   714
+      BackColor       =   12632256
+      Caption         =   "Info"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdLoadFromWeb 
+      Height          =   255
+      Left            =   840
+      TabIndex        =   15
+      Top             =   2280
+      Width           =   2535
+      _cx             =   4471
+      _cy             =   450
+      BackColor       =   12632256
+      Caption         =   "Carica/Salva Da/A: ""Web/Ftp"""
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdLoadFromFile 
+      Height          =   255
+      Left            =   840
+      TabIndex        =   14
+      Top             =   1440
+      Width           =   2535
+      _cx             =   4471
+      _cy             =   450
+      BackColor       =   12632256
+      Caption         =   "Carica Da: ""File"""
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdSaveToFile 
+      Height          =   255
+      Left            =   840
+      TabIndex        =   13
+      Top             =   840
+      Width           =   2535
+      _cx             =   4471
+      _cy             =   450
+      BackColor       =   12632256
+      Caption         =   "Salva Su: ""File"""
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.Label Label5 
+      Height          =   255
+      Left            =   120
+      TabIndex        =   12
+      Top             =   2880
+      Width           =   3375
+      _cx             =   5953
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Operazioni effettuabili sulle chiavi:"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label Label4 
+      Height          =   255
+      Left            =   60
+      TabIndex        =   11
+      Top             =   120
+      Width           =   3435
+      _cx             =   6059
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Scegli la sezione del Registro di Windows CE:"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.ComboBox cmbSection 
+      Height          =   300
+      Left            =   60
+      TabIndex        =   6
+      Top             =   480
+      Width           =   3375
+      List            =   "fRegistryTest.frx":0050
+      ItemData        =   "fRegistryTest.frx":0078
+      _cx             =   5953
+      _cy             =   529
+      BackColor       =   -2147483643
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   "Combo1"
+      IntegralHeight  =   -1  'True
+      Locked          =   0   'False
+      Sorted          =   0   'False
+      Style           =   2
+   End
+   Begin VBCE.TextBox txtSubKey 
+      Height          =   300
+      Left            =   60
+      TabIndex        =   8
+      Top             =   1680
+      Width           =   3170
+      _cx             =   5592
+      _cy             =   529
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   ""
+      Alignment       =   0
+      HideSelection   =   -1  'True
+      Locked          =   0   'False
+      MaxLength       =   0
+      MultiLine       =   0   'False
+      PasswordChar    =   ""
+      ScrollBars      =   0
+   End
+   Begin VBCE.TextBox txtValue 
+      Height          =   315
+      Left            =   60
+      TabIndex        =   9
+      Top             =   2520
+      Width           =   2895
+      _cx             =   5106
+      _cy             =   556
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   ""
+      Alignment       =   0
+      HideSelection   =   -1  'True
+      Locked          =   0   'False
+      MaxLength       =   0
+      MultiLine       =   0   'False
+      PasswordChar    =   ""
+      ScrollBars      =   0
+   End
+   Begin VBCE.TextBox txtKey 
+      Height          =   315
+      Left            =   60
+      TabIndex        =   7
+      Top             =   1080
+      Width           =   3375
+      _cx             =   5953
+      _cy             =   556
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Text            =   ""
+      Alignment       =   0
+      HideSelection   =   -1  'True
+      Locked          =   0   'False
+      MaxLength       =   0
+      MultiLine       =   0   'False
+      PasswordChar    =   ""
+      ScrollBars      =   0
+   End
+   Begin VBCE.Label Label3 
+      Height          =   255
+      Left            =   120
+      TabIndex        =   10
+      Top             =   2280
+      Width           =   495
+      _cx             =   873
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Value:"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   0
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label Label2 
+      Height          =   255
+      Left            =   60
+      TabIndex        =   5
+      Top             =   1440
+      Width           =   615
+      _cx             =   1085
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "SubKey:"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   0
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label Label1 
+      Height          =   255
+      Left            =   60
+      TabIndex        =   4
+      Top             =   840
+      Width           =   375
+      _cx             =   661
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Key:"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   0
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.CommandButton cmdGet 
+      Height          =   405
+      Left            =   1920
+      TabIndex        =   3
+      Top             =   3180
+      Width           =   1515
+      _cx             =   2672
+      _cy             =   714
+      BackColor       =   12632256
+      Caption         =   "Leggi ""Key/SubKey/Value"""
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdSample 
+      Height          =   435
+      Left            =   2760
+      TabIndex        =   2
+      Top             =   3600
+      Width           =   675
+      _cx             =   1191
+      _cy             =   767
+      BackColor       =   12632256
+      Caption         =   "Aiuto"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdSave 
+      Height          =   195
+      Left            =   120
+      TabIndex        =   1
+      Top             =   3600
+      Width           =   1670
+      _cx             =   2946
+      _cy             =   344
+      BackColor       =   12632256
+      Caption         =   "Salva ""SubKey/Value"""
+      Enabled         =   0   'False
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+   Begin VBCE.CommandButton cmdCreate 
+      Height          =   405
+      Left            =   120
+      TabIndex        =   0
+      Top             =   3180
+      Width           =   1275
+      _cx             =   2249
+      _cy             =   714
+      BackColor       =   12632256
+      Caption         =   "Crea ""Key"""
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Style           =   0
+   End
+End
+Attribute VB_Name = "fRegistryTest"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+' NL`ikikas C16
+
+Option Explicit
+
+ Public nomefile As String
+ Dim saved As Boolean
+ Dim txtkeyU, txtsubkeyU, txtvalueU, txtsubktypeU As String
+ Dim txtkeyR, txtsubkeyR, txtvalueR, txtsubktypeR As String
+ Dim cmbsectionlstiU, cmbsectionlstiR As Integer
+ 
+ saved = True
+ 
+Public Function GetFileDialog(Intestazione As String, filefilter As String, DefExt As String, Operation As String) As String
+'Dim fileflags As FileOpenConstants
+ CommonDialog1.DialogTitle = Intestazione
+ CommonDialog1.DefaultExt = DefExt
+ CommonDialog1.InitDir = "\"
+  CommonDialog1.Filter = filefilter
+ CommonDialog1.FilterIndex = 0
+ 
+ If Operation = "load" Then
+ ' fileflags = cdlOFNFileMustExist
+ CommonDialog1.Flags = cdlOFNFileMustExist
+ CommonDialog1.ShowOpen
+ 
+ Else
+ 
+ '
+ ' passando un parametro non null
+ ' e premendo cancel lui sovreascrive
+ ' comunque il <nomefile> passato
+ '
+ 
+ CommonDialog1.FileName = ""
+ ' fileflags = cdlOFNCreatePrompt + cdlOFNOverwritePrompt
+ CommonDialog1.Flags = cdlOFNCreatePrompt + cdlOFNOverwritePrompt
+ CommonDialog1.ShowSave
+ End If
+
+GetFileDialog = CommonDialog1.FileName
+
+On Error Resume Next
+
+
+
+
+
+End Function
+ 
+ 
+
+Private Sub AddSubkey_Click()
+SubKeyList.AddItem txtSubKey.Text
+End Sub
+
+Private Sub cmbsection_change()
+'cmbsectionlstiU = cmbSection.ListIndex
+cmbSection.ListIndex = cmbSection.ListIndex
+
+If saved = False Then
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+txtsubktypeU = txtSubktype.Text
+
+End If
+
+End Sub
+
+Private Sub cmbSection_Click()
+saved = False
+End Sub
+
+
+Private Sub cmdextractsubkey_Click()
+
+Dim dwIndex As Long
+
+       Dim lretval  As Long         'result of the API functions
+       Dim hKey     As Long         'handle of opened key
+       Dim vValue   As Variant      'setting of queried value
+       Dim lpname As String
+       Dim lpcbname As Long
+       Dim lpClass As String
+       Dim lpcbClass As Long
+ 
+       lretval = RegOpenKeyEx(cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, 0, KEY_ENUMERATE_SUB_KEYS, hKey)
+
+dwIndex = 0
+
+While lretval <> ERROR_NO_MORE_ITEMS
+
+lpcbname = 65000
+lpname = String(lpcbname - 1, 0)
+
+lpcbClass = 1
+
+lretval = RegEnumKeyEx(hKey, dwIndex, lpname, lpcbname, 0, lpClass, lpcbClass, 0)
+
+' fino a che non ricevo come errore:
+' ERROR_NO_MORE_ITEMS
+
+lpname = Mid(lpname, 1, lpcbname)
+
+If lretval <> ERROR_NO_MORE_ITEMS Then
+SubKeyList.AddItem lpname
+End If
+
+dwIndex = dwIndex + 1
+
+Wend
+
+       RegCloseKey (hKey)
+       
+
+End Sub
+
+Private Sub cmdLoadFromFile_Click()
+
+'
+' Salvataggio della Key Non Salvata
+'
+
+If saved = False Then
+Call cmdSaveToFile_Click
+End If
+'
+nomefile = GetFileDialog("Apertura File con Le Chiavi", "File di testo (*.txt)|*.txt|All Files (*.*)|*.*", "txt", "load")
+
+If nomefile <> "" Then
+
+saved = True
+
+File2.Close
+File2.Open nomefile, fsModeInput
+
+cmbsectionlstiU = cmbSection.ListIndex
+cmbSection.ListIndex = File2.LineInputString
+
+txtkeyU = txtKey.Text
+txtKey.Text = File2.LineInputString
+
+
+
+'
+' nuovo input
+'
+
+'
+ SubKeyList.Clear
+ 
+ While Not File2.EOF
+ SubKeyList.AddItem File2.LineInputString
+ Wend
+'
+
+'
+' vecchio input .....
+'
+
+'txtsubkeyU = txtSubKey.Text
+'txtSubKey.Text = File2.LineInputString
+
+'txtsubktypeU = txtSubktype.Text
+'txtSubktype.Text = File2.LineInputString
+
+' se il tipo è binario ovviamente leggo
+' in modalità raw .....
+'
+
+'txtvalueU = txtValue.Text
+'txtValue.Text = File2.LineInputString
+
+
+
+
+'txtValue.Text = File2.InputB
+
+
+File2.Close
+
+
+'
+' apertura del file in modalità binaria..
+'
+'File2.Open nomefile, fsModeBinary, , , 32766
+'While ((File2.EOF = False))
+'Text1.Text = Text1.Text & CStr(File2.Input(32766))
+'Wend
+
+'File2.Close
+
+End If
+
+End Sub
+
+Private Sub cmdLoadFromWeb_Click()
+frmROPEsample.Show
+End Sub
+
+Private Sub cmdSaveBin_Click()
+Dim coppola As String
+Dim x As Long
+   '-- Save Key in Registry if user typed in a key, subkey, and value
+    If Len(txtKey.Text) > 0 And _
+        Len(txtSubKey.Text) > 0 And _
+            Len(txtValue.Text) > 0 Then
+                '-- Save Value
+
+
+
+
+'
+' funziona se leggo direttamente dalla key-binaria e scrivo...
+'
+
+coppola = QueryValue(cmbSection.ItemData(cmbSection.ListIndex), "Comm\RasBook\Harpa", "Entry")
+
+SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, coppola, REG_BINARY
+
+'
+' ovviamente un'oggetto testuale non potrà ne leggerere ne scrivere una key binaria..
+'
+'SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, txtValue.Text, REG_BINARY
+'
+
+
+
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+
+txtsubktypeU = txtSubktype.Text
+txtSubktype.Text = "bin"
+ 
+ End If
+End Sub
+
+Private Sub cmdSaveDwd_Click()
+   '-- Save Key in Registry if user typed in a key, subkey, and value
+    If Len(txtKey.Text) > 0 And _
+        Len(txtSubKey.Text) > 0 And _
+            Len(txtValue.Text) > 0 Then
+                '-- Save Value
+                SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, txtValue.Text, REG_DWORD
+
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+
+txtsubktypeU = txtSubktype.Text
+txtSubktype.Text = "dwd"
+ 
+    End If
+End Sub
+
+Private Sub cmdSaveMsz_Click()
+   '-- Save Key in Registry if user typed in a key, subkey, and value
+    If Len(txtKey.Text) > 0 And _
+        Len(txtSubKey.Text) > 0 And _
+            Len(txtValue.Text) > 0 Then
+                '-- Save Value
+ SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, txtValue.Text, REG_MULTI_SZ
+ 
+ 
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+ 
+ txtsubktypeU = txtSubktype.Text
+ txtSubktype.Text = "msz"
+    
+    End If
+End Sub
+
+Private Sub cmdSaveStr_Click()
+   '-- Save Key in Registry if user typed in a key, subkey, and value
+    If Len(txtKey.Text) > 0 And _
+        Len(txtSubKey.Text) > 0 And _
+            Len(txtValue.Text) > 0 Then
+                '-- Save Value
+                SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, txtValue.Text, REG_SZ
+                
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+
+txtsubktypeU = txtSubktype.Text
+txtSubktype.Text = "str"
+ 
+ 
+ 
+ 
+    End If
+    
+    
+End Sub
+
+Private Sub cmdSaveToFile_Click()
+
+Dim cont As Long
+
+nomefile = GetFileDialog("Salvataggio Chiave su File", "File di testo (*.txt)|*.txt|All Files (*.*)|*.*", "txt", "save")
+
+If nomefile <> "" Then
+File2.Close
+
+File2.Open nomefile, fsModeOutput
+
+File2.LinePrint cmbSection.ListIndex
+File2.LinePrint txtKey.Text
+
+'
+' da sostituire con la lista delle key...
+'
+
+'
+For cont = 0 To (SubKeyList.ListCount - 1)
+File2.LinePrint SubKeyList.List(cont)
+Next
+'
+
+'File2.LinePrint txtSubKey.Text
+'File2.LinePrint txtSubktype.Text
+'File2.LinePrint txtValue.Text
+
+
+File2.Close
+saved = True
+Else
+saved = False
+End If
+
+End Sub
+
+Private Sub Command1_Click()
+frmAbout.Show
+End Sub
+
+Private Sub Command2_Click()
+
+txtkeyU = txtKey.Text
+txtKey.Text = ""
+
+txtsubkeyU = txtSubKey.Text
+txtSubKey.Text = ""
+
+txtvalueU = txtValue.Text
+txtValue.Text = ""
+
+txtsubktypeU = txtSubktype.Text
+txtSubktype.Text = ""
+
+' new add....: 21 . 04 . 2001
+
+SubKeyList.Clear
+'
+
+End Sub
+
+Private Sub Command3_Click()
+
+cmbsectionlstiR = cmbSection.ListIndex
+cmbSection.ListIndex = cmbsectionlstiU
+cmbsectionlstiU = cmbsectionlstiR
+
+txtkeyR = txtKey.Text
+txtKey.Text = txtkeyU
+txtkeyU = txtkeyR
+
+txtsubkeyR = txtSubKey.Text
+txtSubKey.Text = txtsubkeyU
+txtsubkeyU = txtsubkeyR
+
+txtvalueR = txtValue.Text
+txtValue.Text = txtvalueU
+txtvalueU = txtvalueR
+
+txtsubktypeR = txtSubktype.Text
+txtSubktype.Text = txtsubktypeU
+txtsubktypeU = txtsubktypeR
+
+End Sub
+
+
+Private Sub delsubkey_Click()
+
+SubKeyList.RemoveItem (SubKeyList.ListIndex)
+
+End Sub
+
+Private Sub Form_OKClick()
+    App.End
+End Sub
+
+Private Sub cmdCreate_Click()
+    '-- Create New Key in Registry if user typed in a key
+    If Len(txtKey.Text) > 0 Then
+        '-- Create Key in selected section
+        CreateNewKey cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text
+    End If
+End Sub
+
+Private Sub cmdGet_Click()
+Dim coppola As String
+    '-- Get Key in Registry if user typed in a key and subkey
+    If Len(txtKey.Text) > 0 And _
+        Len(txtSubKey.Text) > 0 Then
+            '-- Get Value Self Text Mode / Conversion Required For Binary Data
+            
+           txtkeyU = txtKey.Text
+           txtsubkeyU = txtSubKey.Text
+           txtvalueU = txtValue.Text
+           txtsubktypeU = txtSubktype.Text
+
+txtValue.Text = QueryValue(cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text)
+
+'
+' funziona se leggo direttamente dalla key e riscrivo...
+'
+
+'coppola = QueryValue(cmbSection.ItemData(cmbSection.ListIndex), "Comm\RasBook\Harpa", "Entry")
+'SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, coppola, REG_BINARY
+ 
+ 
+'binRandSeed = QueryValue(&H80000001, "Comm\Security\Crypto\UserKeys\Jornada", "RandSeed")
+
+
+    End If
+End Sub
+
+Private Sub cmdSample_Click()
+    
+   Dim strMsg As String
+    
+   ' cmbSection.ListIndex = 1
+   ' txtKey.Text = "Comm\RasBook\Prova"
+   ' txtSubKey.Text = "DevCfg"
+   ' txtValue.Text = ""
+    
+    strMsg = "1) Scegli la Sezione del Registro di Windows poi:" & vbCrLf
+    strMsg = strMsg & "2) Premi Crea ""Key"" per settare una RegKey" & vbCrLf
+    strMsg = strMsg & "3) Premi Salva ""SubKey/Value"" per memorizzare il valore della subkey" & vbCrLf & vbCrLf
+    strMsg = strMsg & "N.B.: LE CHIAVI LETTE, SE DI TIPO BINARIO, NON SARANNO VISIBILI!"
+    MsgBox strMsg, , "Aiuto in linea"
+End Sub
+
+Private Sub cmdSave_Click()
+    '-- Save Key in Registry if user typed in a key, subkey, and value
+    If Len(txtKey.Text) > 0 And _
+        Len(txtSubKey.Text) > 0 And _
+            Len(txtValue.Text) > 0 Then
+                '-- Save Value
+                SetKeyValue cmbSection.ItemData(cmbSection.ListIndex), txtKey.Text, txtSubKey.Text, txtValue.Text, REG_SZ
+    End If
+End Sub
+
+Private Sub Form_Load()
+    '-- Size screen to fit device window
+    Me.Width = Screen.Width
+    Me.Height = Screen.Height
+    cmbSection.AddItem "HKEY_CLASSES_ROOT"
+    cmbSection.ItemData(cmbSection.NewIndex) = HKEY_CLASSES_ROOT
+    cmbSection.AddItem "HKEY_CURRENT_USER"
+    cmbSection.ItemData(cmbSection.NewIndex) = HKEY_CURRENT_USER
+    cmbSection.AddItem "HKEY_LOCAL_MACHINE"
+    cmbSection.ItemData(cmbSection.NewIndex) = HKEY_LOCAL_MACHINE
+    cmbSection.ListIndex = 0
+End Sub
+
+
+
+Private Sub SubKeyList_Click()
+
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+
+txtSubKey.Text = SubKeyList.List(SubKeyList.ListIndex)
+End Sub
+
+Private Sub txtKey_Change()
+'saved = False
+End Sub
+
+Private Sub txtKey_Click()
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+End Sub
+
+
+Private Sub txtSubKey_Click()
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+End Sub
+
+
+Private Sub txtValue_Change()
+'saved = False
+End Sub
+
+Private Sub txtValue_Click()
+cmbsectionlstiU = cmbSection.ListIndex
+txtkeyU = txtKey.Text
+txtsubkeyU = txtSubKey.Text
+txtvalueU = txtValue.Text
+End Sub
+
