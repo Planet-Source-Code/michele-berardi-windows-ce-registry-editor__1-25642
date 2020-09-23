@@ -1,0 +1,149 @@
+VERSION 5.00
+Begin VB.Form frmAbout 
+   Appearance      =   0  'Flat
+   BackColor       =   &H80000005&
+   Caption         =   "Informazioni"
+   ClientHeight    =   3615
+   ClientLeft      =   60
+   ClientTop       =   345
+   ClientWidth     =   3480
+   ForeColor       =   &H80000008&
+   Moveable        =   0   'False
+   ScaleHeight     =   3615
+   ScaleWidth      =   3480
+   ShowOK          =   -1  'True
+   Begin VBCE.Label Label2 
+      Height          =   375
+      Left            =   240
+      TabIndex        =   3
+      Top             =   600
+      Width           =   2895
+      _cx             =   5106
+      _cy             =   661
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Setta / Modifica Chiavi di Registro anche da Remoto"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label lblFreeware 
+      Height          =   255
+      Left            =   240
+      TabIndex        =   2
+      Top             =   2520
+      Width           =   2895
+      _cx             =   5106
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Html && Reg Query Process Tool"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label lblCopyright 
+      Height          =   615
+      Left            =   240
+      TabIndex        =   1
+      Top             =   1440
+      Width           =   2895
+      _cx             =   5106
+      _cy             =   1085
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Copyright © 2001 Berardi Michele 03473192000@mail.omnitel.it"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483640
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+   Begin VBCE.Label lblName 
+      Height          =   255
+      Left            =   240
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2895
+      _cx             =   5106
+      _cy             =   450
+      AutoSize        =   0   'False
+      BackColor       =   -2147483643
+      BackStyle       =   1
+      BorderStyle     =   0
+      Caption         =   "Remote KeyMaker 1.0b Beta"
+      Enabled         =   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483635
+      Alignment       =   2
+      UseMnemonic     =   -1  'True
+      WordWrap        =   0   'False
+   End
+End
+Attribute VB_Name = "frmAbout"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+Private Sub Form_Load()
+  
+  End Sub
+Private Sub Form_OKClick()
+  
+  Me.Hide
+
+End Sub
+
+Private Sub lblFreeware_Click()
+
+End Sub
+
+Private Sub lblName_Click()
+
+End Sub
